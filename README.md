@@ -1,3 +1,8 @@
+# Fork Changes
+
+* Pulls from a docker package that has a manually built version of strapi committed to it
+* Uses a newer version of node
+
 # [Strapi](https://github.com/strapi/strapi) containerized
 
 ![Strapi](https://cldup.com/7umchwdUBh.png)
