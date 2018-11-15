@@ -1,4 +1,4 @@
-FROM node:10.13.0-alpine
+FROM donaldr/strapi-built:latest
 
 LABEL maintainer="Donald Richardson <me@donaldrichardson.net>" \
       org.label-schema.vendor="Strapi" \
@@ -9,8 +9,6 @@ LABEL maintainer="Donald Richardson <me@donaldrichardson.net>" \
       org.label-schema.version=latest \
       org.label-schema.schema-version="1.0"
 
-RUN echo "unsafe-perm = true" >> ~/.npmrc
-
 COPY strapi.sh ./
 RUN chmod +x ./strapi.sh
 
@@ -20,4 +18,5 @@ COPY healthcheck.js ./
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s \
       CMD node /usr/src/api/healthcheck.js
 
-CMD ["./strapi.sh"]
+#CMD ["./strapi.sh"]
+CMD ["tail", "-f", "/dev/null"]

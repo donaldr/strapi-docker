@@ -2,8 +2,7 @@ version: '3'
 
 services:
   api:
-    image: e8a49122b6fb
-    #donaldr/strapi:latest
+    build: .
     environment:
       - APP_NAME=strapi-app
       - DATABASE_CLIENT=mongo
@@ -17,8 +16,6 @@ services:
       - 1337:1337
     volumes:
       - ./strapi-app:/usr/src/api/strapi-app
-      - ./strapi-src:/usr/local/src/strapi
-      #- /usr/src/api/strapi-app/node_modules
     depends_on:
       - db
     restart: always

@@ -30,15 +30,12 @@ RUN apk --update --no-cache \
                 libjpeg-turbo \
                 libjpeg-turbo-dev
 
+RUN mkdir -p /usr/local/src/strapi
 RUN mkdir /usr/local/lib/strapi
 WORKDIR /usr/src/api
 
 RUN echo "unsafe-perm = true" >> ~/.npmrc
 
 EXPOSE 1337
-
-COPY healthcheck.js ./
-HEALTHCHECK --interval=15s --timeout=5s --start-period=30s \
-      CMD node /usr/src/api/healthcheck.js
 
 CMD ["tail", "-f", "/dev/null"]
